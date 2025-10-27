@@ -1,5 +1,6 @@
 import { getPostData, getAllPostIds } from '@/lib/posts';
 import { notFound } from 'next/navigation';
+import MermaidRenderer from '@/components/MermaidRenderer'; // MermaidRendererをインポート
 
 type PostPageProps = {
   params: {
@@ -31,7 +32,8 @@ export default async function PostPage({ params }: PostPageProps) {
       <p className="text-gray-600 mb-6">
         <time dateTime={postData.date}>{postData.date}</time> by {postData.author}
       </p>
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      {/* dangerouslySetInnerHTML の代わりに MermaidRenderer を使用 */}
+      <MermaidRenderer contentHtml={postData.contentHtml} />
     </article>
   );
 }

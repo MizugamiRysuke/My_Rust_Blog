@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import remarkMermaid from 'remark-mermaidjs'; // 追加
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
@@ -57,6 +58,7 @@ export async function getPostData(id: string): Promise<PostData> {
   // remark を使ってマークダウンを HTML 文字列に変換する
   const processedContent = await remark()
     .use(html)
+    .use(remarkMermaid) // 追加
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
