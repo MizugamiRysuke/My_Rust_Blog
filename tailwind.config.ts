@@ -1,6 +1,6 @@
-import type { Config } from 'tailwindcss';
+// import type { Config } from 'tailwindcss'; // この行を削除
 
-const config: Config = {
+const config: any = { // Config を any に変更
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
